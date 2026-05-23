@@ -1,0 +1,75 @@
+{
+  "templates": {
+    "order_confirmation": {
+      "en": "Your order #{orderId} has been confirmed. Total: ${total}. We'll notify you when it ships.",
+      "es": "Su pedido #{orderId} ha sido confirmado. Total: ${total}. Le notificaremos cuando sea enviado.",
+      "fr": "Votre commande #{orderId} a été confirmée. Total: ${total}. Nous vous informerons lorsqu'elle sera expédiée."
+    },
+    "order_shipped": {
+      "en": "Great news! Your order #{orderId} has been shipped. Tracking: {trackingNumber}. Expected delivery: {estimatedDelivery}",
+      "es": "¡Buenas noticias! Su pedido #{orderId} ha sido enviado. Seguimiento: {trackingNumber}. Entrega estimada: {estimatedDelivery}",
+      "fr": "Bonne nouvelle! Votre commande #{orderId} a été expédiée. Suivi: {trackingNumber}. Livraison prévue: {estimatedDelivery}"
+    },
+    "payment_confirmation": {
+      "en": "Payment of ${amount} for order #{orderId} was successful. Transaction ID: {transactionId}",
+      "es": "Pago de ${amount} para el pedido #{orderId} fue exitoso. ID de transacción: {transactionId}",
+      "fr": "Paiement de ${amount} pour la commande #{orderId} réussi. ID de transaction: {transactionId}"
+    },
+    "payment_failed": {
+      "en": "Payment failed for order #{orderId}. Amount: ${amount}. Please check your payment method and try again.",
+      "es": "Pago fallido para el pedido #{orderId}. Monto: ${amount}. Por favor verifique su método de pago e intente nuevamente.",
+      "fr": "Échec du paiement pour la commande #{orderId}. Montant: ${amount}. Veuillez vérifier votre mode de paiement et réessayer."
+    },
+    "order_delivered": {
+      "en": "Your order #{orderId} has been delivered! Thank you for shopping with us. Rate your experience: {ratingUrl}",
+      "es": "¡Su pedido #{orderId} ha sido entregado! Gracias por comprar con nosotros. Califique su experiencia: {ratingUrl}",
+      "fr": "Votre commande #{orderId} a été livrée! Merci de magasiner avec nous. Évaluez votre expérience: {ratingUrl}"
+    },
+    "welcome": {
+      "en": "Welcome {name}! Thank you for joining our platform. Use code WELCOME10 for 10% off your first order.",
+      "es": "¡Bienvenido {name}! Gracias por unirse a nuestra plataforma. Use el código BIENVENIDA10 para 10% de descuento en su primer pedido.",
+      "fr": "Bienvenue {name}! Merci de rejoindre notre plateforme. Utilisez le code BIENVENUE10 pour 10% de réduction sur votre première commande."
+    },
+    "password_reset": {
+      "en": "Your password reset code is: {otpCode}. Valid for 10 minutes. Do not share this code with anyone.",
+      "es": "Su código de restablecimiento de contraseña es: {otpCode}. Válido por 10 minutos. No comparta este código con nadie.",
+      "fr": "Votre code de réinitialisation de mot de passe est: {otpCode}. Valable 10 minutes. Ne partagez ce code avec personne."
+    },
+    "low_balance": {
+      "en": "Alert: Your wallet balance is low: ${balance}. Please recharge to continue using our services.",
+      "es": "Alerta: Su saldo de billetera es bajo: ${balance}. Por favor recargue para continuar usando nuestros servicios.",
+      "fr": "Alerte: Votre solde de portefeuille est faible: ${balance}. Veuillez recharger pour continuer à utiliser nos services."
+    },
+    "inventory_low": {
+      "en": "URGENT: {productName} (SKU: {sku}) is low on stock. Current: {currentStock} units. Threshold: {threshold}",
+      "es": "URGENTE: {productName} (SKU: {sku}) tiene bajo stock. Actual: {currentStock} unidades. Límite: {threshold}",
+      "fr": "URGENT: {productName} (SKU: {sku}) a un stock faible. Actuel: {currentStock} unités. Seuil: {threshold}"
+    },
+    "otp_verification": {
+      "en": "Your verification code is: {otpCode}. This code will expire in 10 minutes.",
+      "es": "Su código de verificación es: {otpCode}. Este código expirará en 10 minutos.",
+      "fr": "Votre code de vérification est: {otpCode}. Ce code expirera dans 10 minutes."
+    },
+    "refund_processed": {
+      "en": "Refund of ${amount} for order #{orderId} has been processed. Funds will be credited in 3-5 business days.",
+      "es": "Reembolso de ${amount} para el pedido #{orderId} ha sido procesado. Los fondos se acreditarán en 3-5 días hábiles.",
+      "fr": "Remboursement de ${amount} pour la commande #{orderId} a été traité. Les fonds seront crédités sous 3 à 5 jours ouvrables."
+    },
+    "abandoned_cart": {
+      "en": "You left items in your cart! Complete your purchase now and get free shipping. {cartUrl}",
+      "es": "¡Dejaste artículos en tu carrito! Completa tu compra ahora y obtén envío gratis. {cartUrl}",
+      "fr": "Vous avez laissé des articles dans votre panier! Complétez votre achat maintenant et obtenez la livraison gratuite. {cartUrl}"
+    },
+    "price_drop": {
+      "en": "Price drop alert! {productName} is now ${newPrice} (was ${oldPrice}). Shop now: {productUrl}",
+      "es": "¡Alerta de baja de precio! {productName} ahora cuesta ${newPrice} (era ${oldPrice}). Compra ahora: {productUrl}",
+      "fr": "Alerte de baisse de prix! {productName} est maintenant à ${newPrice} (était ${oldPrice}). Achetez maintenant: {productUrl}"
+    }
+  },
+  "config": {
+    "default_language": "en",
+    "max_length": 160,
+    "support_languages": ["en", "es", "fr"],
+    "character_encoding": "GSM-7"
+  }
+}

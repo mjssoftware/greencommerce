@@ -1,0 +1,410 @@
+ecommerce-backend/
+│
+├── api-gateway/
+│   ├── src/
+│   │   ├── config/
+│   │   │   ├── gateway.config.js
+│   │   │   ├── routes.config.js
+│   │   │   └── plugins.config.js
+│   │   ├── middleware/
+│   │   │   ├── auth.js
+│   │   │   ├── rate-limiter.js
+│   │   │   ├── logging.js
+│   │   │   └── error-handler.js
+│   │   ├── routes/
+│   │   │   ├── v1/
+│   │   │   │   ├── auth.routes.js
+│   │   │   │   ├── product.routes.js
+│   │   │   │   ├── order.routes.js
+│   │   │   │   ├── cart.routes.js
+│   │   │   │   ├── payment.routes.js
+│   │   │   │   ├── inventory.routes.js
+│   │   │   │   ├── notification.routes.js
+│   │   │   │   └── review.routes.js
+│   │   │   └── index.js
+│   │   ├── utils/
+│   │   │   ├── logger.js
+│   │   │   └── jwt-helper.js
+│   │   └── app.js
+│   ├── package.json
+│   ├── .env
+│   ├── .env.example
+│   ├── Dockerfile
+│   └── ecosystem.config.js
+│
+├── services/
+│   │
+│   ├── identity-auth-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── database.js
+│   │   │   │   ├── redis.js
+│   │   │   │   ├── rabbitmq.js
+│   │   │   │   └── jwt.js
+│   │   │   ├── controllers/
+│   │   │   │   ├── auth.controller.js
+│   │   │   │   ├── user.controller.js
+│   │   │   │   └── role.controller.js
+│   │   │   ├── models/
+│   │   │   │   ├── User.model.js
+│   │   │   │   ├── Role.model.js
+│   │   │   │   └── RefreshToken.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── auth.service.js
+│   │   │   │   ├── user.service.js
+│   │   │   │   ├── token.service.js
+│   │   │   │   └── email.service.js
+│   │   │   ├── middleware/
+│   │   │   │   ├── validate.js
+│   │   │   │   ├── auth.js
+│   │   │   │   └── permission.js
+│   │   │   ├── validations/
+│   │   │   │   ├── user.validation.js
+│   │   │   │   └── auth.validation.js
+│   │   │   ├── utils/
+│   │   │   │   ├── logger.js
+│   │   │   │   ├── bcrypt.js
+│   │   │   │   ├── api-error.js
+│   │   │   │   └── api-response.js
+│   │   │   ├── events/
+│   │   │   │   ├── publishers/
+│   │   │   │   │   └── user-event.publisher.js
+│   │   │   │   └── subscribers/
+│   │   │   │       └── notification.subscriber.js
+│   │   │   ├── repositories/
+│   │   │   │   ├── user.repository.js
+│   │   │   │   └── role.repository.js
+│   │   │   ├── routes/
+│   │   │   │   ├── v1/
+│   │   │   │   │   ├── auth.routes.js
+│   │   │   │   │   └── user.routes.js
+│   │   │   │   └── index.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   │   ├── unit/
+│   │   │   ├── integration/
+│   │   │   └── fixtures/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── .env.example
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── product-catalog-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── database.js
+│   │   │   │   ├── redis.js
+│   │   │   │   └── rabbitmq.js
+│   │   │   ├── controllers/
+│   │   │   │   ├── product.controller.js
+│   │   │   │   ├── category.controller.js
+│   │   │   │   └── brand.controller.js
+│   │   │   ├── models/
+│   │   │   │   ├── Product.model.js
+│   │   │   │   ├── Category.model.js
+│   │   │   │   ├── Brand.model.js
+│   │   │   │   └── ProductImage.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── product.service.js
+│   │   │   │   ├── search.service.js (Elasticsearch)
+│   │   │   │   └── cache.service.js
+│   │   │   ├── middleware/
+│   │   │   │   ├── validate.js
+│   │   │   │   ├── cache.js
+│   │   │   │   └── auth.js
+│   │   │   ├── validations/
+│   │   │   │   └── product.validation.js
+│   │   │   ├── utils/
+│   │   │   │   ├── logger.js
+│   │   │   │   └── api-features.js
+│   │   │   ├── events/
+│   │   │   │   └── publishers/
+│   │   │   │       └── product-event.publisher.js
+│   │   │   ├── repositories/
+│   │   │   │   └── product.repository.js
+│   │   │   ├── routes/
+│   │   │   │   ├── v1/
+│   │   │   │   │   ├── product.routes.js
+│   │   │   │   │   └── category.routes.js
+│   │   │   │   └── index.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── order-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── database.js
+│   │   │   │   ├── rabbitmq.js
+│   │   │   │   └── redis.js
+│   │   │   ├── controllers/
+│   │   │   │   ├── order.controller.js
+│   │   │   │   └── order-status.controller.js
+│   │   │   ├── models/
+│   │   │   │   ├── Order.model.js
+│   │   │   │   ├── OrderItem.model.js
+│   │   │   │   └── OrderStatus.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── order.service.js
+│   │   │   │   ├── order-state.service.js
+│   │   │   │   └── saga-orchestrator.service.js
+│   │   │   ├── middleware/
+│   │   │   │   └── validate.js
+│   │   │   ├── validations/
+│   │   │   │   └── order.validation.js
+│   │   │   ├── utils/
+│   │   │   │   └── logger.js
+│   │   │   ├── events/
+│   │   │   │   ├── publishers/
+│   │   │   │   │   ├── order-event.publisher.js
+│   │   │   │   │   └── payment-event.publisher.js
+│   │   │   │   └── subscribers/
+│   │   │   │       ├── payment-response.subscriber.js
+│   │   │   │       └── inventory-response.subscriber.js
+│   │   │   ├── repositories/
+│   │   │   │   └── order.repository.js
+│   │   │   ├── routes/
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── order.routes.js
+│   │   │   │   └── index.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── cart-basket-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── redis.js
+│   │   │   │   └── rabbitmq.js
+│   │   │   ├── controllers/
+│   │   │   │   └── cart.controller.js
+│   │   │   ├── models/
+│   │   │   │   ├── Cart.model.js (Redis Hash)
+│   │   │   │   └── CartItem.model.js
+│   │   │   ├── services/
+│   │   │   │   └── cart.service.js
+│   │   │   ├── middleware/
+│   │   │   │   └── validate.js
+│   │   │   ├── validations/
+│   │   │   │   └── cart.validation.js
+│   │   │   ├── utils/
+│   │   │   │   └── logger.js
+│   │   │   ├── repositories/
+│   │   │   │   └── cart.repository.js
+│   │   │   ├── routes/
+│   │   │   │   └── v1/
+│   │   │   │       └── cart.routes.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── payment-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── database.js
+│   │   │   │   ├── stripe.js (or PayPal, Razorpay)
+│   │   │   │   └── rabbitmq.js
+│   │   │   ├── controllers/
+│   │   │   │   └── payment.controller.js
+│   │   │   ├── models/
+│   │   │   │   └── Payment.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── payment.service.js
+│   │   │   │   ├── stripe.service.js
+│   │   │   │   └── webhook.service.js
+│   │   │   ├── middleware/
+│   │   │   │   ├── validate.js
+│   │   │   │   └── webhook-verify.js
+│   │   │   ├── validations/
+│   │   │   │   └── payment.validation.js
+│   │   │   ├── utils/
+│   │   │   │   └── logger.js
+│   │   │   ├── events/
+│   │   │   │   ├── publishers/
+│   │   │   │   │   └── payment-event.publisher.js
+│   │   │   │   └── subscribers/
+│   │   │   │       └── order-payment.subscriber.js
+│   │   │   ├── repositories/
+│   │   │   │   └── payment.repository.js
+│   │   │   ├── routes/
+│   │   │   │   ├── v1/
+│   │   │   │   │   └── payment.routes.js
+│   │   │   │   └── webhook.routes.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── inventory-stock-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── database.js
+│   │   │   │   └── rabbitmq.js
+│   │   │   ├── controllers/
+│   │   │   │   └── inventory.controller.js
+│   │   │   ├── models/
+│   │   │   │   ├── Inventory.model.js
+│   │   │   │   └── StockMovement.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── inventory.service.js
+│   │   │   │   └── stock-reservation.service.js
+│   │   │   ├── middleware/
+│   │   │   │   └── validate.js
+│   │   │   ├── validations/
+│   │   │   │   └── inventory.validation.js
+│   │   │   ├── utils/
+│   │   │   │   └── logger.js
+│   │   │   ├── events/
+│   │   │   │   ├── publishers/
+│   │   │   │   │   └── inventory-event.publisher.js
+│   │   │   │   └── subscribers/
+│   │   │   │       ├── order-inventory.subscriber.js
+│   │   │   │       └── payment-confirmed.subscriber.js
+│   │   │   ├── repositories/
+│   │   │   │   └── inventory.repository.js
+│   │   │   ├── routes/
+│   │   │   │   └── v1/
+│   │   │   │       └── inventory.routes.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   ├── notification-service/
+│   │   ├── src/
+│   │   │   ├── config/
+│   │   │   │   ├── redis.js
+│   │   │   │   ├── rabbitmq.js
+│   │   │   │   ├── email.js (Nodemailer, SendGrid)
+│   │   │   │   └── sms.js (Twilio)
+│   │   │   ├── controllers/
+│   │   │   │   └── notification.controller.js
+│   │   │   ├── models/
+│   │   │   │   └── Notification.model.js
+│   │   │   ├── services/
+│   │   │   │   ├── email.service.js
+│   │   │   │   ├── sms.service.js
+│   │   │   │   └── push.service.js
+│   │   │   ├── templates/
+│   │   │   │   ├── email/
+│   │   │   │   │   ├── welcome.hbs
+│   │   │   │   │   ├── order-confirmation.hbs
+│   │   │   │   │   └── payment-receipt.hbs
+│   │   │   │   └── sms/
+│   │   │   │       └── templates.json
+│   │   │   ├── middleware/
+│   │   │   │   └── validate.js
+│   │   │   ├── utils/
+│   │   │   │   └── logger.js
+│   │   │   ├── events/
+│   │   │   │   └── subscribers/
+│   │   │   │       ├── user-created.subscriber.js
+│   │   │   │       ├── order-created.subscriber.js
+│   │   │   │       ├── payment-success.subscriber.js
+│   │   │   │       └── inventory-low.subscriber.js
+│   │   │   ├── routes/
+│   │   │   │   └── v1/
+│   │   │   │       └── notification.routes.js
+│   │   │   └── app.js
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── .env
+│   │   ├── Dockerfile
+│   │   └── ecosystem.config.js
+│   │
+│   └── review-rating-service/
+│       ├── src/
+│       │   ├── config/
+│       │   │   ├── database.js
+│       │   │   └── rabbitmq.js
+│       │   ├── controllers/
+│       │   │   └── review.controller.js
+│       │   ├── models/
+│       │   │   ├── Review.model.js
+│       │   │   └── Rating.model.js
+│       │   ├── services/
+│       │   │   ├── review.service.js
+│       │   │   └── sentiment.service.js (Optional)
+│       │   ├── middleware/
+│       │   │   ├── validate.js
+│       │   │   └── auth.js
+│       │   ├── validations/
+│       │   │   └── review.validation.js
+│       │   ├── utils/
+│       │   │   └── logger.js
+│       │   ├── events/
+│       │   │   └── publishers/
+│       │   │       └── review-event.publisher.js
+│       │   ├── repositories/
+│       │   │   └── review.repository.js
+│       │   ├── routes/
+│       │   │   └── v1/
+│       │   │       └── review.routes.js
+│       │   └── app.js
+│       ├── tests/
+│       ├── package.json
+│       ├── .env
+│       ├── Dockerfile
+│       └── ecosystem.config.js
+│
+├── message-broker/
+│   ├── docker-compose.rabbitmq.yml (or Kafka)
+│   ├── rabbitmq.config.js (for connections)
+│   └── event-schemas/
+│       ├── user.events.json
+│       ├── order.events.json
+│       ├── payment.events.json
+│       └── inventory.events.json
+│
+├── shared/
+│   ├── libs/
+│   │   ├── logger/
+│   │   │   └── index.js
+│   │   ├── message-queue/
+│   │   │   ├── rabbitmq-client.js
+│   │   │   └── kafka-client.js
+│   │   ├── database/
+│   │   │   ├── mongodb.js
+│   │   │   └── postgres.js
+│   │   ├── redis/
+│   │   │   └── client.js
+│   │   └── utils/
+│   │       ├── jwt.js
+│   │       ├── encryption.js
+│   │       └── validator.js
+│   ├── types/
+│   │   └── (TypeScript interfaces if using TS)
+│   └── constants/
+│       ├── events.js
+│       ├── status-codes.js
+│       └── roles.js
+│
+├── docker-compose.yml
+├── docker-compose.override.yml
+├── .env
+├── .gitignore
+├── README.md
+├── kubernetes/ (Optional)
+│   ├── deployments/
+│   ├── services/
+│   ├── configmaps/
+│   └── ingress.yaml
+│
+└── scripts/
+    ├── setup.sh
+    ├── seed-data.js
+    └── health-check.sh
